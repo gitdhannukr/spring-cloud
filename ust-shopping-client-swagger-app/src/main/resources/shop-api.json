@@ -1,0 +1,303 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "CRUD operation on product",
+        "version": "1.0",
+        "title": "Product App Info",
+        "termsOfService": "licence",
+        "contact": {
+            "name": "Dhananjay ",
+            "url": "http://www.dhantehnoworld.com",
+            "email": "dhananjoykr000@gmail.com"
+        },
+        "license": {
+            "name": "API Licence",
+            "url": "www.dhantehnoworld.com"
+        }
+    },
+    "host": "localhost:8070",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "product-controller",
+            "description": "Product Controller"
+        }
+    ],
+    "paths": {
+        "/product": {
+            "get": {
+                "tags": [
+                    "product-controller"
+                ],
+                "summary": "getProducts",
+                "operationId": "getProductsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Product"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "product-controller"
+                ],
+                "summary": "saveProduct",
+                "operationId": "saveProductUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "product",
+                        "description": "product",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "product-controller"
+                ],
+                "summary": "updateProduct",
+                "operationId": "updateProductUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "product",
+                        "description": "product",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/product/filterProductByPrice/{lowerRange}/{upperRange}": {
+            "get": {
+                "tags": [
+                    "product-controller"
+                ],
+                "summary": "find product by giving lower and upper range bound",
+                "description": "hey you van product on price for example:1900-3000",
+                "operationId": "filterProductByPriceUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "lowerRange",
+                        "in": "path",
+                        "description": "lowerRange",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "upperRange",
+                        "in": "path",
+                        "description": "upperRange",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Product"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/product/{productId}": {
+            "get": {
+                "tags": [
+                    "product-controller"
+                ],
+                "summary": "getProduct",
+                "operationId": "getProductUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "productId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "product-controller"
+                ],
+                "summary": "deleteProduct",
+                "operationId": "deleteProductUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "productId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Product": {
+            "type": "object",
+            "properties": {
+                "price": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "100"
+                },
+                "productId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "product id is unnique and pk"
+                },
+                "productName": {
+                    "type": "string",
+                    "description": "product Name is Dog "
+                },
+                "quantityOnHand": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "product quantityOnHand 1200"
+                }
+            },
+            "title": "Product",
+            "description": "what I have mentionplz tell me plz ???"
+        }
+    }
+}
